@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CodeIgniter Application Test Suite" tests="3" assertions="3" failures="0" errors="0" time="0.094250">
+    <testsuite name="Welcome_test" file="/Applications/MAMP/htdocs/swe-camp-2019/application/tests/controllers/Welcome_test.php" fullPackage="Welcome" tests="1" assertions="1" failures="0" errors="0" time="0.023903">
+      <testcase name="test_index" class="Welcome_test" file="/Applications/MAMP/htdocs/swe-camp-2019/application/tests/controllers/Welcome_test.php" line="13" assertions="1" time="0.023903"/>
+    </testsuite>
+    <testsuite name="Example_model_test" file="/Applications/MAMP/htdocs/swe-camp-2019/application/tests/models/Example_model_test.php" fullPackage="Example.model" tests="1" assertions="1" failures="0" errors="0" time="0.029921">
+      <testcase name="test_get_test_list" class="Example_model_test" file="/Applications/MAMP/htdocs/swe-camp-2019/application/tests/models/Example_model_test.php" line="12" assertions="1" time="0.029921"/>
+    </testsuite>
+    <testsuite name="User_model_test" file="/Applications/MAMP/htdocs/swe-camp-2019/application/tests/models/User_model_test.php" fullPackage="User.model" tests="1" assertions="1" failures="0" errors="0" time="0.040426">
+      <testcase name="test_insert_user" class="User_model_test" file="/Applications/MAMP/htdocs/swe-camp-2019/application/tests/models/User_model_test.php" line="12" assertions="1" time="0.040426"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
