@@ -1,0 +1,70 @@
+defaults: &defaults
+  working_directory: ~/group1
+  docker:
+      - image: circleci/php:5.6-node-browsers
+
+version: 2
+jobs:
+  checkout_code:
+    <<: *defaults
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  build_test:
+    <<: *defaults
+/    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Install composer
+          command: curl -sS https://getcomposer.org/installer | php -- --filename=composer
+
+  static_analysis:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run: composer install
+      - run: ./vendor/bin/phpcs --standard=phpcs/rules.xml
+
+  unit_tests:
+    working_directory: ~/group1
+    docker:
+      - image: circleci/php:5.6-node-browsers
+      - image: circleci/mysql:5.7
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
+        environment:
+          MYSQL_DATABASE: sweregrade
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+    steps:
+      - attach_workspace:
+          at: .
+      - run: sudo apt install -y mysql-client
+      - run: composer install
+      - run: sudo docker-php-ext-install zip pdo pdo_mysql
+      - run: sudo docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+      - run:
+          name: Import Database
+          command: mysql  -h 127.0.0.1 -u root < db/sweregrade.sql
+      - run:  cd application/tests/ && ../../vendor/bin/phpunit --debug
+
+
+workflows:
+  version: 2
+  swe_camp_pipeline:
+    jobs:
+      - checkout_code
+      - build_test:
+          requires:
+            - checkout_code
+      - static_analysis:
+          requires:
+            - build_test
+      - unit_tests:
+          requires:
+            - build_test
+
