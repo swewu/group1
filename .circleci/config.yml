@@ -15,7 +15,7 @@ jobs:
 
   build_test:
     <<: *defaults
-/    steps:
+    steps:
       - attach_workspace:
           at: .
       - run:
