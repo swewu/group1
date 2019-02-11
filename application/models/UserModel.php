@@ -42,15 +42,14 @@ class UserModel extends CI_Model
 		return $query;
     }
 
-    public function insertsubjecthistory($historyid, $term, $year, $grade, $studentid, $courseid)
+    public function insertsubjecthistory($studentid, $courseid, $year, $term, $grade)
     {
         $data = array(
-            'historyid' => $historyid,
-            'term' => $term,
-            'year' => $year,
-            'grade' => $grade,
             'studentid' => $studentid,
-            'courseid' => $courseid
+            'courseid' => $courseid,
+            'year' => $year,
+            'term' => $term,
+            'grade' => $grade
         );
         $this->db->insert('historygrade', $data);
         return ($this->db->affected_rows() != 1) ? false : true;
@@ -83,6 +82,35 @@ class UserModel extends CI_Model
 		$query = $this->db->query($sql);
 		return $query;
 
+    }
+    public function deletesubjecthistory($historyid)
+	{
+		$sql = "delete  FROM historygrade where historyid= '".$historyid."' ";
+		$query = $this->db->query($sql);	
+		return $query;
+    }
+    public function deletesubjectre($historyid)
+	{
+		$sql = "delete  FROM regrade where gradeid= '".$historyid."' ";
+		$query = $this->db->query($sql);	
+		return $query;
+    }
+
+    public function editsubject($historyid){
+		$sql ='SELECT * FROM historygrade where historyid = "'.$historyid.'" ';
+		//var_dump($sql);
+		$query = $this->db->query($sql);
+		return $query;
+	}
+
+    public function updateeditsubject($historyid, $studentid, $courseid, $year, $term, $grade)
+    {
+        $sql ='UPDATE historygrade SET courseid="'.$courseid.'", year="'.$year.'", term="'.$term.'", grade="'.$grade.'" WHERE historyid="'.$historyid.'";';
+		$query = $this->db->query($sql);
+		if($query){
+			echo '<script>alert("แก้ไขข้อมูอาจารย์สำเร็จ")</script>';
+		}
+		return $query;
     }
 
   

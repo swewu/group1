@@ -33,7 +33,7 @@ class User_model_test extends TestCase
         $year = '3';
         $grade = '2.5';
         $studentid = '1';
-        $courseid = '01';
+        $courseid = 'DIM60-101';
         $result = $this->obj->insertsubjecthistory($historyid,$term,$year,$grade,$studentid,$courseid);
         $this->assertTrue($result);
     }
@@ -45,10 +45,24 @@ class User_model_test extends TestCase
         $year = '3';
         $grade = '2.5';
         $studentid = '1';
-        $courseid = '01';
+        $courseid = 'DIM60-101';
         $result = $this->obj->insertsubjectre($gradeid ,$term, $year, $grade, $studentid, $courseid);
         $this->assertTrue($result);
     }
+
+    public function test_delete_subhistory()
+    {
+        $historyid = '1';
+        $result = $this->obj->deletesubjecthistory($historyid);
+        $this->assertTrue($result);
+    }
+    public function test_delete_subre()
+    {
+        $gradeid = '1';
+        $result = $this->obj->deletesubjecthistory($gradeid);
+        $this->assertTrue($result);
+    }
+
 
 
 }

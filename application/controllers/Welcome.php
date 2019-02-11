@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('form_login');
+		$this->load->view('login');
 
 	}
 	public function inseruser()
@@ -36,6 +36,10 @@ class Welcome extends CI_Controller {
 	public function teacher()
 	{
 		$this->load->view('teacher');
+	}
+	public function inserthis(Type $var = null)
+	{
+		$this->load->view('insertsubjecthistory');
 	}
 
 	public function getdata()
@@ -53,12 +57,15 @@ class Welcome extends CI_Controller {
 		if($result){
 			echo '<script>alert("Student Login Success")</script>';
 			if($_SESSION['role'] == 1){
-				redirect('Welcome/student');
+				redirect('Welcome/getdata');
 			}else if($_SESSION['role'] == 2){
 				redirect('Welcome/teacher');
 			}
-			
-			
+
+		}else{
+			echo "<script>alert('username หรือ password ไม่ถูกต้อง');
+				window.location.href='index';
+				</script>";
 		}
 			
 	}
@@ -75,6 +82,27 @@ class Welcome extends CI_Controller {
 			// redirect('Welcome/index');
 		}
 	}
+	public function insertsubjecthistory()
+	{
+		$studentid  = isset($_POST['studentid'])?$_POST['studentid']:"";
+		$courseid = isset($_POST['courseid'])?$_POST['courseid']:"";
+		$year = isset($_POST['year'])?$_POST['year']:"";
+		$term = isset($_POST['term'])?$_POST['term']:"";
+		$grade = isset($_POST['grade'])?$_POST['grade']:"";
+		$this->load->model('UserModel');
+		$result = $this->UserModel->insertsubjecthistory($studentid, $courseid, $year, $term, $grade);
+		if($result){
+			// echo '<script>alert("บันทึกสำเร็จ")</script>';
+			// redirect('Welcome/getdata');
+			echo "<script>alert('บันทึกสำเร็จ');
+				window.location.href='getdata';
+				</script>";
+		}else{
+			echo "<script>alert('บันทึกไม่สำเร็จ');
+				window.location.href='getdata';
+				</script>";
+		}
+	}
 
 	public function getuser(){
 		$this->load->model('ActivitySWEModel','ac');
@@ -82,24 +110,41 @@ class Welcome extends CI_Controller {
 		return $result;
 	}
 
-	public function deletesubjesthistoy($historyid)
+	public function deletesubjecthistory()
 	{
-		$sql = "delete  FROM historygrade where historyid= '".$historyid."' ";
-		$query = $this->db->query($sql);	
-		return $query;
+		$historyid = $this->uri->segment(3);
+			$this->load->model("UserModel");  
+           	$this->UserModel->deletesubjecthistory($historyid);  
+           	redirect(base_url() . "Welcome/deleted"); 
+		// return $res;
+
 	}
 	public function deletesubjectre($gradeid)
 	{
 		$sql = "delete  FROM regrade where gradeid= '".$gradeid."' ";
 		$query = $this->db->query($sql);	
 		return $query;
+
 	}
+	public function deleted()  
+      {  
+           $this->getdata();  
+      }  
 
 
 	public function getsubjecthistory(){
 		$this->load->model('UserModel');
 		$result = $this->UserModel->getsubjecthistory();
 		return $result;
+	}
+
+	public function editsubject($historyid){
+		$this->load->model('UserModel');
+		$result = $this->UserModel->editsubject($historyid);
+		$data =  array('datalist' => $result);
+		$this->load->view('form_editsubject',$data);
+		
+
 	}
 
 }

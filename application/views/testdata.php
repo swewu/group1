@@ -9,10 +9,9 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
-    <script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <script src="<?php echo base_url() ?>assets/js/setup.js"></script>
   <title>Herb</title>
 </head>
 
@@ -52,7 +51,7 @@
         <div class="col-md-1 ml-auto">
           <div class="input-group">
             <div class="input-group">
-              <a href="<?php echo base_url() ?>main/insertherb" class="btn btn-success">Data</a>
+              <a href="<?php echo base_url() ?>Welcome/inserthis" class="btn btn-success">insert Data</a>
             </div>
           </div>
         </div>
@@ -78,6 +77,8 @@
                   <th>ปีการศึกษา</th>
                   <th>เทอม</th>
                   <th>เกรด</th>
+                  <th>แก้ไข</th>
+                  <th>ลบ</th>
                 </tr>
               </thead>
               <tbody id="herbs">
@@ -89,9 +90,19 @@
                         echo '<td>'.$i.'</td>';
                         echo '<td>'.$row->studentid.'</td>';
                         echo '<td>'.$row->courseid.'</td>';
-                        echo '<td>'.$row->term.'</td>';
                         echo '<td>'.$row->year.'</td>';
+                        echo '<td>'.$row->term.'</td>';
                         echo '<td>'.$row->grade.'</td>';
+                        echo '<td>';
+                        echo '<a href="editsubject/'.$row->historyid.'" class="btn btn-info">';
+                        echo '<i class="far fa-edit">Edit</i>';
+                        echo '</a>';
+                        echo '</td>';
+                        echo '<td>';
+                        echo '<a href="#" class="delete_data btn btn-danger" id="'.$row->historyid.'">';
+                        echo '<i class="fa fa-trash">Delete</i>';
+                        echo '</a>';
+                        echo '</td>';
                         echo '</tr>';
                         $i++;
                     }
@@ -144,4 +155,29 @@
   </footer>
 </body>
 
+<script>  
+      $(document).ready(function(){  
+           $('.delete_data').click(function(){  
+                var id = $(this).attr("id");  
+                if(confirm("Are you sure you want to delete this?"))  
+                {  
+                     window.location="<?php echo base_url(); ?>Welcome/deletesubjecthistory/"+id;  
+                }  
+                else  
+                {  
+                     return false;  
+                }  
+           });  
+      });  
+
+
+      $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+      </script>
 </html>
