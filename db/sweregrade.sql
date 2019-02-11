@@ -26,11 +26,12 @@ DROP TABLE IF EXISTS `sweregrade`.`student` ;
 CREATE TABLE IF NOT EXISTS `sweregrade`.`student` (
   `studentid` INT(10) NOT NULL AUTO_INCREMENT,
   `studentname` VARCHAR(200) NOT NULL,
-  `userid` INT(10) ZEROFILL NOT NULL,
-  PRIMARY KEY (`studentid`),
-  FOREIGN KEY (`userid`)
-    REFERENCES `sweregrade`.`user` (`userid`))
+  PRIMARY KEY (`studentid`))
 ENGINE = InnoDB;
+ALTER TABLE `sweregrade`.`student` 
+ADD COLUMN `userid` INT(10) ZEROFILL NOT NULL,
+ADD FOREIGN KEY (`userid`)
+    REFERENCES `sweregrade`.`user` (`userid`)
 
 
 -- -----------------------------------------------------
