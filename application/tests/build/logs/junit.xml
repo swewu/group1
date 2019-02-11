@@ -1,17 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="CodeIgniter Application Test Suite" tests="6" assertions="6" failures="0" errors="0" time="0.112880">
-    <testsuite name="Welcome_test" file="C:\xampp\htdocs\group1\application\tests\controllers\Welcome_test.php" fullPackage="Welcome" tests="1" assertions="1" failures="0" errors="0" time="0.021692">
-      <testcase name="test_index" class="Welcome_test" file="C:\xampp\htdocs\group1\application\tests\controllers\Welcome_test.php" line="13" assertions="1" time="0.021692"/>
+  <testsuite name="CodeIgniter Application Test Suite" tests="6" assertions="6" failures="1" errors="0" time="0.134988">
+    <testsuite name="Welcome_test" file="C:\xampp\htdocs\group1\application\tests\controllers\Welcome_test.php" fullPackage="Welcome" tests="1" assertions="1" failures="1" errors="0" time="0.014962">
+      <testcase name="test_index" class="Welcome_test" file="C:\xampp\htdocs\group1\application\tests\controllers\Welcome_test.php" line="13" assertions="1" time="0.014962">
+        <failure type="PHPUnit_Framework_ExpectationFailedException">Welcome_test::test_index
+Failed asserting that '
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+	&lt;title&gt;Page Title&lt;/title&gt;
+	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+	&lt;link rel="stylesheet" type="text/css" media="screen" href="main.css"&gt;
+	&lt;script src="main.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action="http://localhost/Welcome/checkLogin" method="get"&gt;
+	&lt;input type="text" name="id" placeholder="id" required&gt;
+	&lt;input type="text" name="password" placeholder="password" required&gt;
+	&lt;input type="submit" value="Login"&gt;&lt;/form&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;' contains "&lt;title&gt;Welcome to CodeIgniter&lt;/title&gt;".
+
+C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\Framework\Constraint.php:144
+C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\Framework\Constraint.php:91
+C:\xampp\htdocs\group1\application\tests\controllers\Welcome_test.php:16
+C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\Framework\TestResult.php:648
+C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\Framework\TestSuite.php:779
+C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\Framework\TestSuite.php:749
+C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\Framework\TestSuite.php:709
+C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\TextUI\TestRunner.php:350
+</failure>
+      </testcase>
     </testsuite>
-    <testsuite name="Example_model_test" file="C:\xampp\htdocs\group1\application\tests\models\Example_model_test.php" fullPackage="Example.model" tests="1" assertions="1" failures="0" errors="0" time="0.021527">
-      <testcase name="test_get_test_list" class="Example_model_test" file="C:\xampp\htdocs\group1\application\tests\models\Example_model_test.php" line="12" assertions="1" time="0.021527"/>
+    <testsuite name="Example_model_test" file="C:\xampp\htdocs\group1\application\tests\models\Example_model_test.php" fullPackage="Example.model" tests="1" assertions="1" failures="0" errors="0" time="0.021020">
+      <testcase name="test_get_test_list" class="Example_model_test" file="C:\xampp\htdocs\group1\application\tests\models\Example_model_test.php" line="12" assertions="1" time="0.021020"/>
     </testsuite>
-    <testsuite name="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" fullPackage="User.model" tests="4" assertions="4" failures="0" errors="0" time="0.069661">
-      <testcase name="test_insert_user" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="12" assertions="1" time="0.021441"/>
-      <testcase name="test_login_user" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="21" assertions="1" time="0.008126"/>
-      <testcase name="test_insert_historysub" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="29" assertions="1" time="0.020478"/>
-      <testcase name="test_insert_resub" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="41" assertions="1" time="0.019616"/>
+    <testsuite name="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" fullPackage="User.model" tests="4" assertions="4" failures="0" errors="0" time="0.099005">
+      <testcase name="test_insert_user" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="12" assertions="1" time="0.041124"/>
+      <testcase name="test_login_user" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="21" assertions="1" time="0.018458"/>
+      <testcase name="test_insert_historysub" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="29" assertions="1" time="0.019432"/>
+      <testcase name="test_insert_resub" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="41" assertions="1" time="0.019991"/>
     </testsuite>
   </testsuite>
 </testsuites>

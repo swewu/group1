@@ -20,12 +20,22 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('form_login');
 
 	}
 	public function inseruser()
 	{
 		$this->load->view('form_user');
+	}
+
+	public function student()
+	{
+		$this->load->view('student');
+	}
+
+	public function teacher()
+	{
+		$this->load->view('teacher');
 	}
 	public function checkLogin(){
 		$id  = isset($_GET['id'])?$_GET['id']:"";
@@ -35,8 +45,11 @@ class Welcome extends CI_Controller {
 		if($result){
 			echo '<script>alert("Student Login Success")</script>';
 			if($_SESSION['role'] == 1){
-				redirect('Welcome/index');
+				redirect('Welcome/student');
+			}else if($_SESSION['role'] == 2){
+				redirect('Welcome/teacher');
 			}
+			
 			
 		}
 			
@@ -61,8 +74,16 @@ class Welcome extends CI_Controller {
 		return $result;
 	}
 
-	public function FunctionName(Type $var = null)
+	public function deletesubjesthistoy($historyid)
 	{
-		
+		$sql = "delete  FROM historygrade where historyid= '".$historyid."' ";
+		$query = $this->db->query($sql);	
+		return $query;
+	}
+	public function deletesubjectre($gradeid)
+	{
+		$sql = "delete  FROM regrade where gradeid= '".$gradeid."' ";
+		$query = $this->db->query($sql);	
+		return $query;
 	}
 }
