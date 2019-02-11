@@ -37,6 +37,14 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('teacher');
 	}
+
+	public function getdata()
+	{
+ 			$subjecthistory = $this->getsubjecthistory();
+ 			$data['subjecthistory'] = $subjecthistory;
+			$this->load->view('testdata',$data);
+
+	}
 	public function checkLogin(){
 		$id  = isset($_GET['id'])?$_GET['id']:"";
 		$pass = isset($_GET['password'])?$_GET['password']:"";
@@ -86,4 +94,12 @@ class Welcome extends CI_Controller {
 		$query = $this->db->query($sql);	
 		return $query;
 	}
+
+
+	public function getsubjecthistory(){
+		$this->load->model('UserModel');
+		$result = $this->UserModel->getsubjecthistory();
+		return $result;
+	}
+
 }

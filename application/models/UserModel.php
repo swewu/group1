@@ -69,6 +69,23 @@ class UserModel extends CI_Model
         $this->db->insert('regrade', $data);
         return ($this->db->affected_rows() != 1) ? false : true;
     }
+
+    public function getsubjecthistory()
+    {
+        $sql = "SELECT * FROM historygrade";
+		$query = $this->db->query($sql);
+		return $query;
+
+    }
+    public function getsubjectre()
+    {
+        $sql = "SELECT * FROM regrade";
+		$query = $this->db->query($sql);
+		return $query;
+
+    }
+
+  
     
     
 }
