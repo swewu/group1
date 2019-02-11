@@ -15,7 +15,7 @@ class UserModel extends CI_Model
         return ($this->db->affected_rows() != 1) ? false : true;
     }
 
-    public function checkLogin($id,$pass){
+    public function checkLogin($id, $pass){
 		$sql ="SELECT * FROM user where username = '".$id."' and password = '".$pass."' ";
 		// var_dump($sql);
 		$query = $this->db->query($sql);
@@ -42,10 +42,10 @@ class UserModel extends CI_Model
 		return $query;
     }
 
-    public function insertsubjecthistory($historyid,$term,$year,$grade,$studentid,$courseid)
+    public function insertsubjecthistory($historyid, $term, $year, $grade, $studentid, $courseid)
     {
         $data = array(
-            'historyid' => $id,
+            'historyid' => $historyid,
             'term' => $term,
             'year' => $year,
             'grade' => $grade,
@@ -56,10 +56,10 @@ class UserModel extends CI_Model
         return ($this->db->affected_rows() != 1) ? false : true;
     }
 
-    public function insertsubjectre($historyid,$term,$year,$grade,$studentid,$courseid)
+    public function insertsubjectre($gradeid, $term, $year, $grade, $studentid, $courseid)
     {
         $data = array(
-            'gradeid' => $id,
+            'gradeid' => $gradeid,
             'term' => $term,
             'year' => $year,
             'grade' => $grade,

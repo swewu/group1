@@ -22,7 +22,7 @@ class User_model_test extends TestCase
     {
         $username = 'admin';
         $password = 'admin';
-        $result = $this->obj->checkLogin($id,$password);
+        $result = $this->obj->checkLogin($username,$password);
         $this->assertTrue($result);
     }
 
@@ -46,7 +46,7 @@ class User_model_test extends TestCase
         $grade = '2.5';
         $studentid = '1';
         $courseid = '01';
-        $result = $this->obj->insertsubjectre($historyid,$term,$year,$grade,$studentid,$courseid);
+        $result = $this->obj->insertsubjectre($gradeid ,$term, $year, $grade, $studentid, $courseid);
         $this->assertTrue($result);
     }
 
