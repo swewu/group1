@@ -18,6 +18,13 @@ class User_model_test extends TestCase
         $result = $this->obj->create($id,$username,$password,$role);
         $this->assertTrue($result);
     }
+    public function test_login_user()
+    {
+        $username = 'admin';
+        $password = 'admin';
+        $result = $this->obj->checkLogin($id,$password);
+        $this->assertTrue($result);
+    }
 
 
 }

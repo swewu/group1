@@ -20,6 +20,35 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('form_login');
+
+	}
+	public function inseruser()
+	{
+		$this->load->view('form_user');
+	}
+	public function checkLogin(){
+		$id  = isset($_GET['id'])?$_GET['id']:"";
+		$pass = isset($_GET['password'])?$_GET['password']:"";
+		$this->load->model('UserModel');
+		$result = $this->UserModel->checkLogin($id,$pass);
+		if($result){
+			echo '<script>alert("Student Login Success")</script>';
+			redirect('Welcome/index');
+		}
+			
+	}
+	public function insertUser()
+	{
+		$id  = isset($_GET['id'])?$_GET['id']:"";
+		$username = isset($_GET['username'])?$_GET['username']:"";
+		$password = isset($_GET['password'])?$_GET['password']:"";
+		$role = isset($_GET['role'])?$_GET['role']:"";
+		$this->load->model('UserModel');
+		$result = $this->UserModel->create($id, $username, $password, $role);
+		if($result){
+			echo '<script>alert("Student Login Success")</script>';
+			// redirect('Welcome/index');
+		}
 	}
 }
