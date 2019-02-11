@@ -115,7 +115,6 @@ CREATE TABLE IF NOT EXISTS `sweregrade`.`user` (
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(200) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
-  `studentid` INT(10) NOT NULL,
   PRIMARY KEY (`userid`))
 ENGINE = InnoDB;
 
