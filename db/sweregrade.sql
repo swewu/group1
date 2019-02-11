@@ -18,6 +18,20 @@ DROP SCHEMA IF EXISTS `sweregrade` ;
 CREATE SCHEMA IF NOT EXISTS `sweregrade` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `sweregrade` ;
 
+
+-- -----------------------------------------------------
+-- Table `sweregrade`.`user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sweregrade`.`user` ;
+
+CREATE TABLE IF NOT EXISTS `sweregrade`.`user` (
+  `userid` INT(10) ZEROFILL NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(200) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`userid`))
+ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- Table `sweregrade`.`student`
 -- -----------------------------------------------------
@@ -26,14 +40,17 @@ DROP TABLE IF EXISTS `sweregrade`.`student` ;
 CREATE TABLE IF NOT EXISTS `sweregrade`.`student` (
   `studentid` INT(10) NOT NULL AUTO_INCREMENT,
   `studentname` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`studentid`))
+  `userid` int(10) ZEROFILL NOT NULL,
+  PRIMARY KEY (`studentid`),
+  CONSTRAINT `fk_regrade_user1`
+  FOREIGN KEY (`userid`)
+    REFERENCES `sweregrade`.`user` (`userid`))
 ENGINE = InnoDB;
+/*
 ALTER TABLE `sweregrade`.`student` 
-ADD COLUMN `userid` INT(10) ZEROFILL NOT NULL,
+ADD COLUMN `userid` int(10) ZEROFILL NOT NULL,
 ADD FOREIGN KEY (`userid`)
-    REFERENCES `sweregrade`.`user` (`userid`)
-
-
+    REFERENCES `sweregrade`.`user` (`userid`);*/
 -- -----------------------------------------------------
 -- Table `sweregrade`.`course`
 -- -----------------------------------------------------
@@ -59,8 +76,7 @@ CREATE TABLE IF NOT EXISTS `sweregrade`.`historygrade` (
   `studentid` INT(10) NOT NULL,
   `courseid` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`historyid`),
-  INDEX `fk_historygrade_student_idx` (`studentid` ASC),
-  INDEX `fk_historygrade_course1_idx` (`courseid` ASC),
+
   CONSTRAINT `fk_historygrade_student`
     FOREIGN KEY (`studentid`)
     REFERENCES `sweregrade`.`student` (`studentid`)
@@ -91,8 +107,7 @@ CREATE TABLE IF NOT EXISTS `sweregrade`.`regrade` (
   `studentid` INT(10) NOT NULL,
   `courseid` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`gradeid`),
-  INDEX `fk_regrade_student1_idx` (`studentid` ASC),
-  INDEX `fk_regrade_course1_idx` (`courseid` ASC),
+  
   CONSTRAINT `fk_regrade_student1`
     FOREIGN KEY (`studentid`)
     REFERENCES `sweregrade`.`student` (`studentid`)
@@ -106,18 +121,6 @@ CREATE TABLE IF NOT EXISTS `sweregrade`.`regrade` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `sweregrade`.`user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `sweregrade`.`user` ;
-
-CREATE TABLE IF NOT EXISTS `sweregrade`.`user` (
-  `userid` INT(10) ZEROFILL NOT NULL,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(200) NOT NULL,
-  `role` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`userid`))
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
