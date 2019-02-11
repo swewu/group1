@@ -34,7 +34,10 @@ class Welcome extends CI_Controller {
 		$result = $this->UserModel->checkLogin($id,$pass);
 		if($result){
 			echo '<script>alert("Student Login Success")</script>';
-			redirect('Welcome/index');
+			if($_SESSION['role'] == 1){
+				redirect('Welcome/index');
+			}
+			
 		}
 			
 	}
@@ -50,5 +53,16 @@ class Welcome extends CI_Controller {
 			echo '<script>alert("Student Login Success")</script>';
 			// redirect('Welcome/index');
 		}
+	}
+
+	public function getuser(){
+		$this->load->model('ActivitySWEModel','ac');
+		$result = $this->ac->getuser();
+		return $result;
+	}
+
+	public function FunctionName(Type $var = null)
+	{
+		
 	}
 }

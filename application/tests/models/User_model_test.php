@@ -26,6 +26,30 @@ class User_model_test extends TestCase
         $this->assertTrue($result);
     }
 
+    public function test_insert_historysub()
+    {
+        $historyid = '1';
+        $term = '1';
+        $year = '3';
+        $grade = '2.5';
+        $studentid = '1';
+        $courseid = '01';
+        $result = $this->obj->insertsubjecthistory($historyid,$term,$year,$grade,$studentid,$courseid);
+        $this->assertTrue($result);
+    }
+
+    public function test_insert_resub()
+    {
+        $gradeid = '1';
+        $term = '1';
+        $year = '3';
+        $grade = '2.5';
+        $studentid = '1';
+        $courseid = '01';
+        $result = $this->obj->insertsubjectre($historyid,$term,$year,$grade,$studentid,$courseid);
+        $this->assertTrue($result);
+    }
+
 
 }
 

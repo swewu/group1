@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="CodeIgniter Application Test Suite" tests="4" assertions="4" failures="2" errors="0" time="0.163078">
-    <testsuite name="Welcome_test" file="C:\xampp\htdocs\group1\application\tests\controllers\Welcome_test.php" fullPackage="Welcome" tests="1" assertions="1" failures="1" errors="0" time="0.032870">
-      <testcase name="test_index" class="Welcome_test" file="C:\xampp\htdocs\group1\application\tests\controllers\Welcome_test.php" line="13" assertions="1" time="0.032870">
+  <testsuite name="CodeIgniter Application Test Suite" tests="6" assertions="6" failures="2" errors="0" time="0.116293">
+    <testsuite name="Welcome_test" file="C:\xampp\htdocs\group1\application\tests\controllers\Welcome_test.php" fullPackage="Welcome" tests="1" assertions="1" failures="1" errors="0" time="0.022193">
+      <testcase name="test_index" class="Welcome_test" file="C:\xampp\htdocs\group1\application\tests\controllers\Welcome_test.php" line="13" assertions="1" time="0.022193">
         <failure type="PHPUnit_Framework_ExpectationFailedException">Welcome_test::test_index
 Failed asserting that '&lt;form action="http://localhost/Welcome/checkLogin" method="get"&gt;
 	&lt;input type="text" name="id" placeholder="id" required&gt;
@@ -21,12 +21,12 @@ C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\TextUI\TestRunner.php:350
 </failure>
       </testcase>
     </testsuite>
-    <testsuite name="Example_model_test" file="C:\xampp\htdocs\group1\application\tests\models\Example_model_test.php" fullPackage="Example.model" tests="1" assertions="1" failures="0" errors="0" time="0.030362">
-      <testcase name="test_get_test_list" class="Example_model_test" file="C:\xampp\htdocs\group1\application\tests\models\Example_model_test.php" line="12" assertions="1" time="0.030362"/>
+    <testsuite name="Example_model_test" file="C:\xampp\htdocs\group1\application\tests\models\Example_model_test.php" fullPackage="Example.model" tests="1" assertions="1" failures="0" errors="0" time="0.020364">
+      <testcase name="test_get_test_list" class="Example_model_test" file="C:\xampp\htdocs\group1\application\tests\models\Example_model_test.php" line="12" assertions="1" time="0.020364"/>
     </testsuite>
-    <testsuite name="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" fullPackage="User.model" tests="2" assertions="2" failures="1" errors="0" time="0.099846">
-      <testcase name="test_insert_user" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="12" assertions="1" time="0.016041"/>
-      <testcase name="test_login_user" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="21" assertions="1" time="0.083805">
+    <testsuite name="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" fullPackage="User.model" tests="4" assertions="4" failures="1" errors="0" time="0.073736">
+      <testcase name="test_insert_user" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="12" assertions="1" time="0.027335"/>
+      <testcase name="test_login_user" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="21" assertions="1" time="0.009642">
         <failure type="PHPUnit_Framework_ExpectationFailedException">User_model_test::test_login_user
 Failed asserting that false is true.
 
@@ -40,6 +40,8 @@ C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\Framework\TestSuite.php:70
 C:\xampp\htdocs\group1\vendor\phpunit\phpunit\PHPUnit\TextUI\TestRunner.php:350
 </failure>
       </testcase>
+      <testcase name="test_insert_historysub" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="29" assertions="1" time="0.024244"/>
+      <testcase name="test_insert_resub" class="User_model_test" file="C:\xampp\htdocs\group1\application\tests\models\User_model_test.php" line="41" assertions="1" time="0.012515"/>
     </testsuite>
   </testsuite>
 </testsuites>

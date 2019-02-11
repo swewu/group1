@@ -34,6 +34,41 @@ class UserModel extends CI_Model
         var_dump($result);
 		return $result;
     }
+
+    public function getuser()
+    {
+        $sql = "SELECT * FROM historygrade";
+		$query = $this->db->query($sql);
+		return $query;
+    }
+
+    public function insertsubjecthistory($historyid,$term,$year,$grade,$studentid,$courseid)
+    {
+        $data = array(
+            'historyid' => $id,
+            'term' => $term,
+            'year' => $year,
+            'grade' => $grade,
+            'studentid' => $studentid,
+            'courseid' => $courseid
+        );
+        $this->db->insert('historygrade', $data);
+        return ($this->db->affected_rows() != 1) ? false : true;
+    }
+
+    public function insertsubjectre($historyid,$term,$year,$grade,$studentid,$courseid)
+    {
+        $data = array(
+            'gradeid' => $id,
+            'term' => $term,
+            'year' => $year,
+            'grade' => $grade,
+            'studentid' => $studentid,
+            'courseid' => $courseid
+        );
+        $this->db->insert('regrade', $data);
+        return ($this->db->affected_rows() != 1) ? false : true;
+    }
     
     
 }
