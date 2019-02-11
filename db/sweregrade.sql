@@ -26,7 +26,9 @@ DROP TABLE IF EXISTS `sweregrade`.`student` ;
 CREATE TABLE IF NOT EXISTS `sweregrade`.`student` (
   `studentid` INT(10) NOT NULL AUTO_INCREMENT,
   `studentname` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`studentid`))
+  PRIMARY KEY (`studentid`),
+  FOREIGN KEY (`userid`)
+    REFERENCES `sweregrade`.`user` (`userid`) )
 ENGINE = InnoDB;
 
 
@@ -112,6 +114,7 @@ CREATE TABLE IF NOT EXISTS `sweregrade`.`user` (
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(200) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
+  `studentid` INT(10) NOT NULL,
   PRIMARY KEY (`userid`))
 ENGINE = InnoDB;
 
