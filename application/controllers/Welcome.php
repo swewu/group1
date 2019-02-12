@@ -37,30 +37,34 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('teacher');
 	}
+
+
 	public function inserthis(Type $var = null)
 	{
+		$this->load->view('checksession');
 		$this->load->view('insertsubjecthistory');
 	}
 
 	public function getdata()
 	{
  			$subjecthistory = $this->getsubjecthistory();
- 			$data['subjecthistory'] = $subjecthistory;
+			$data['subjecthistory'] = $subjecthistory;
+			$this->load->view('checksession');
 			$this->load->view('testdata',$data);
 
 	}
 	public function checkLogin(){
-		$id  = isset($_GET['id'])?$_GET['id']:"";
-		$pass = isset($_GET['password'])?$_GET['password']:"";
+		$id  = isset($_POST['id'])?$_POST['id']:"";
+		$pass = isset($_POST['password'])?$_POST['password']:"";
 		$this->load->model('UserModel');
 		$result = $this->UserModel->checkLogin($id,$pass);
 		if($result){
-			echo '<script>alert("Student Login Success")</script>';
-			if($_SESSION['role'] == 1){
+			echo '<script>alert("Login Success")</script>';
+			// if($_SESSION['role'] == 1){
 				redirect('Welcome/getdata');
-			}else if($_SESSION['role'] == 2){
-				redirect('Welcome/teacher');
-			}
+			// }else if($_SESSION['role'] == 2){
+			// 	redirect('Welcome/teacher');
+			// }
 
 		}else{
 			echo "<script>alert('username หรือ password ไม่ถูกต้อง');
@@ -69,6 +73,13 @@ class Welcome extends CI_Controller {
 		}
 			
 	}
+
+	public function logout()
+	{
+		session_destroy();
+
+	}
+
 	public function insertUser()
 	{
 		$id  = isset($_GET['id'])?$_GET['id']:"";
@@ -142,9 +153,33 @@ class Welcome extends CI_Controller {
 		$this->load->model('UserModel');
 		$result = $this->UserModel->editsubject($historyid);
 		$data =  array('datalist' => $result);
+		$this->load->view('checksession');
 		$this->load->view('form_editsubject',$data);
 		
 
+	}
+
+	public function updateeditsubject()
+	{
+		$historyid  = isset($_POST['historyid'])?$_POST['historyid']:"";
+		$studentid  = isset($_POST['studentid'])?$_POST['studentid']:"";
+		$courseid = isset($_POST['courseid'])?$_POST['courseid']:"";
+		$year = isset($_POST['year'])?$_POST['year']:"";
+		$term = isset($_POST['term'])?$_POST['term']:"";
+		$grade = isset($_POST['grade'])?$_POST['grade']:"";
+		$this->load->model('UserModel');
+		$result = $this->UserModel->updateeditsubject($historyid, $studentid, $courseid, $year, $term, $grade);
+
+		if($result){
+			echo "<script>alert('แก้ไขข้อมูลสำเร็จ');
+				window.location.href='getdata';
+				</script>";
+		}
+		else{
+			echo "<script>alert('แก้ไขข้อมูลไม่สำเร็จ');
+				window.location.href='getdata';
+				</script>";
+		}
 	}
 
 }

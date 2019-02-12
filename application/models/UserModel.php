@@ -107,9 +107,7 @@ class UserModel extends CI_Model
     {
         $sql ='UPDATE historygrade SET courseid="'.$courseid.'", year="'.$year.'", term="'.$term.'", grade="'.$grade.'" WHERE historyid="'.$historyid.'";';
 		$query = $this->db->query($sql);
-		if($query){
-			echo '<script>alert("แก้ไขข้อมูอาจารย์สำเร็จ")</script>';
-		}
+		
 		return $query;
     }
 

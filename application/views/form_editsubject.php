@@ -89,21 +89,64 @@
 			    </div>
 			  </div>';
               }
+
+              if($row->grade == 'D'){
+                echo '
+                <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-3 col-form-label">เกรด</label>
+                  <div class="col-sm-9">
+                      <select name="grade" value="W">
+                      <option value="D" selected>D</option>
+                      <option value="D+">D+</option>
+                      <option value="W">W</option>
+                      <option value="F">F</option>
+                    </select>
+                  </div>
+                </div>';
+              }else if($row->grade == 'D+'){
+                echo '
+                <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-3 col-form-label">เกรด</label>
+                  <div class="col-sm-9">
+                      <select name="grade" value="W">
+                      <option value="D">D</option>
+                      <option value="D+" selected>D+</option>
+                      <option value="W">W</option>
+                      <option value="F">F</option>
+                    </select>
+                  </div>
+                </div>';
+              }else if($row->grade == 'W'){
+                echo '
+                <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-3 col-form-label">เกรด</label>
+                  <div class="col-sm-9">
+                      <select name="grade" value="W">
+                      <option value="D">D</option>
+                      <option value="D+">D+</option>
+                      <option value="W" selected>W</option>
+                      <option value="F">F</option>
+                    </select>
+                  </div>
+                </div>';
+              }else if($row->grade == 'F'){
+                echo '
+                <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-3 col-form-label">เกรด</label>
+                  <div class="col-sm-9">
+                      <select name="grade" value="W">
+                      <option value="D">D</option>
+                      <option value="D+">D+</option>
+                      <option value="W">W</option>
+                      <option value="F" selected>F</option>
+                    </select>
+                  </div>
+                </div>';
+              }
+              echo '
              
               
-              echo '
-
-			  <div class="form-group row">
-			    <label for="inputPassword3" class="col-sm-3 col-form-label">เกรด</label>
-			    <div class="col-sm-9">
-					<select name="grade">
-    				<option value="D">D</option>
-    				<option value="D+">D+</option>
-    				<option value="W">W</option>
-    				<option value="F">F</option>
-  				</select>
-			    </div>
-			  </div>
+              
 
 			  	<div class="form-group">
 						<input type="submit" value="บันทึก" class="btn float-right login_btn">
