@@ -40,7 +40,7 @@
       </ul>
       <div class="col-md-4 ml-auto">
           <div class="input-group">
-            <input type="text" class="form-control" id="myInput" placeholder="Search Herb...">
+            <input type="text" class="form-control" id="myInput" placeholder="Search">
             <div class="input-group-append">
               <button class="btn btn-blue"><i class="fa fa-search"></i> Search</button>
             </div>
@@ -54,43 +54,87 @@
 </nav>
 <br><br><br>
   <!-- HEADER -->
-
-  <!-- SEARCH -->
-   <div class="container">
-      <div class="row">
-        <div class="col-md-1">
-          <div class="input-group">
-            <div class="input-group">
-              <a href="<?php echo base_url() ?>Welcome/inserthis" class="btn btn-blue-too"><i class="fa fa-plus"></i> เพิ่มข้อมูลนักศึกษา</a>
-            </div>
-          </div>
+<?php  
+if($_SESSION['role'] == 1){
+  echo '<div class="container">
+  <div class="row">
+    <div class="col-md-1">
+      <div class="input-group">
+        <div class="input-group">
+          <a href="<?php echo base_url() ?>Welcome/inserthis" class="btn btn-blue-too"><i class="fa fa-plus"></i> เพิ่มข้อมูลนักศึกษา</a>
         </div>
       </div>
-    </div><br>
+    </div>
+  </div>
+</div><br>';
+}else{
+  echo '<div class="container">
+  <div class="row">
+    <div class="col-md-1">
+      <div class="input-group">
+        <div class="input-group">
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br>';
+}
+
+?>
+  <!-- SEARCH -->
+   <?php
+   if($_SESSION['role'] == 1){
+     echo '<section id="posts">
+     <div class="container">
+       <div class="row">
+         <div class="col">
+           <div class="card">
+             <div class="card-header">
+               <center><h4>ตารางข้อมูลรายวิชา</h4></center>
+             </div>
+             <table class="table table-striped" id="myTable">
+               <thead class="thead-dark">
+                 <tr>
+                   <th>#</th>
+                   <th>รหัสวิชา</th>
+                   <th>ปีการศึกษา</th>
+                   <th>เทอม</th>
+                   <th>เกรด</th>
+                   <th>แก้ไข</th>
+                   <th>ลบ</th>
+                 </tr>
+               </thead>
+               <tbody id="herbs">';
+   }else{
+     echo '<section id="posts">
+     <div class="container">
+       <div class="row">
+         <div class="col">
+           <div class="card">
+             <div class="card-header">
+               <center><h4>ตารางข้อมูลรายวิชา</h4></center>
+             </div>
+             <table class="table table-striped" id="myTable">
+               <thead class="thead-dark">
+                 <tr>
+                   <th>#</th>
+                   <th>รหัสนักศึกษา</th>
+                   <th>รหัสวิชา</th>
+                   <th>ปีการศึกษา</th>
+                   <th>เทอม</th>
+                   <th>เกรด</th>
+                   <th>แก้ไข</th>
+                   <th>ลบ</th>
+                 </tr>
+               </thead>
+               <tbody id="herbs">';
+   }
+
+
+  ?>
   
   <!-- POSTS -->
-  <section id="posts">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="card">
-            <div class="card-header">
-              <center><h4>ตารางข้อมูลรายวิชา</h4></center>
-            </div>
-            <table class="table table-striped" id="myTable">
-              <thead class="thead-dark">
-                <tr>
-                  <th>#</th>
-                  <th>รหัสนักศึกษา</th>
-                  <th>รหัสวิชา</th>
-                  <th>ปีการศึกษา</th>
-                  <th>เทอม</th>
-                  <th>เกรด</th>
-                  <th>แก้ไข</th>
-                  <th>ลบ</th>
-                </tr>
-              </thead>
-              <tbody id="herbs">
+  
 
                 <?php
                 if($_SESSION['role'] == 1){
@@ -99,7 +143,7 @@
                       if($_SESSION['username'] == $row->studentid){
                         echo '<tr>';
                         echo '<td>'.$i.'</td>';
-                        echo '<td>'.$row->studentid.'</td>';
+
                         echo '<td>'.$row->courseid.'</td>';
                         echo '<td>'.$row->year.'</td>';
                         echo '<td>'.$row->term.'</td>';

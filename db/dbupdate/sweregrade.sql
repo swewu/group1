@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2019 at 03:02 AM
+-- Generation Time: Feb 12, 2019 at 07:11 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -105,17 +105,19 @@ CREATE TABLE `historygrade` (
   `year` int(5) NOT NULL,
   `grade` varchar(3) NOT NULL,
   `studentid` int(10) NOT NULL,
-  `courseid` varchar(20) NOT NULL
+  `courseid` varchar(20) NOT NULL,
+  `newgrade` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `historygrade`
 --
 
-INSERT INTO `historygrade` (`historyid`, `term`, `year`, `grade`, `studentid`, `courseid`) VALUES
-(59114476, 3, 2540, 'F', 59114462, 'GEN61-001'),
-(59114481, 1, 2540, 'W', 59114819, 'GEN61-001'),
-(59114482, 3, 2555, 'W', 59120535, 'MAT61-111');
+INSERT INTO `historygrade` (`historyid`, `term`, `year`, `grade`, `studentid`, `courseid`, `newgrade`) VALUES
+(59114476, 3, 2540, 'F', 59114462, 'GEN61-001', 'A'),
+(59114481, 1, 2540, 'W', 59114819, 'GEN61-001', 'A'),
+(59114483, 1, 2540, 'D+', 59114462, 'GEN61-001', NULL),
+(59114484, 2, 2561, 'W', 59114462, 'DIM60-101', 'B');
 
 -- --------------------------------------------------------
 
@@ -246,6 +248,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userid`, `username`, `password`, `role`) VALUES
+(0000000000, '59114819', '1234', '1'),
 (0000000001, 'admin', 'admin', '1'),
 (0000000002, '59114462', '1234', '1'),
 (0000000003, 'teacher', '1234', '2');
@@ -296,7 +299,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `historygrade`
 --
 ALTER TABLE `historygrade`
-  MODIFY `historyid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59114483;
+  MODIFY `historyid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59114485;
 
 --
 -- AUTO_INCREMENT for table `regrade`
