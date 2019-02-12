@@ -47,8 +47,10 @@ class Welcome extends CI_Controller {
 
 	public function getdata()
 	{
- 			$subjecthistory = $this->getsubjecthistory();
+			 $subjecthistory = $this->getsubjecthistory();
+			 $name = $this->getname();
 			$data['subjecthistory'] = $subjecthistory;
+			$data['name'] = $name;
 			$this->load->view('checksession');
 			$this->load->view('testdata',$data);
 
@@ -149,6 +151,11 @@ class Welcome extends CI_Controller {
 	public function getsubjecthistory(){
 		$this->load->model('UserModel');
 		$result = $this->UserModel->getsubjecthistory();
+		return $result;
+	}
+	public function getname(){
+		$this->load->model('UserModel');
+		$result = $this->UserModel->getname();
 		return $result;
 	}
 

@@ -57,7 +57,7 @@
 				  <div class="form-group row">
 				    <label for="inputEmail3" class="col-sm-3 col-form-label">รหัสนักศึกษา</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" id="studentid" name="studentid" placeholder="รหัสนักศึกษา">
+				      <input type="text" class="form-control" id="studentid" name="studentid" placeholder="รหัสนักศึกษา" disable>
 				    </div>
 				  </div>
 				

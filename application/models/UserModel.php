@@ -144,6 +144,14 @@ class UserModel extends CI_Model
 		return $query;
     }
 
+    public function getname()
+    {
+       $sql ='SELECT studentname FROM user JOIN student ON user.username = student.studentid';
+       $query = $this->db->query($sql);
+		return $query;
+    }
+
+
   
     
     
