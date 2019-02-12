@@ -110,6 +110,39 @@ class UserModel extends CI_Model
 		
 		return $query;
     }
+    public function updateeditsubjectteacher($historyid, $studentid, $courseid, $year, $term, $newgrade)
+    {
+        $sql ='UPDATE historygrade SET courseid="'.$courseid.'", year="'.$year.'", term="'.$term.'", newgrade="'.$newgrade.'" WHERE historyid="'.$historyid.'";';
+		$query = $this->db->query($sql);
+		
+		return $query;
+    }
+
+
+    public function getstatusWithyear($year)
+    {
+        $sql = 'SELECT * FROM historygrade where year = "'.$year.'"';
+		$query = $this->db->query($sql);
+		return $query;
+    }
+    public function getstatusWithgrade($grade)
+    {
+        $sql = 'SELECT * FROM historygrade where grade = "'.$grade.'"';
+		$query = $this->db->query($sql);
+		return $query;
+    }
+    public function getstatusWithstudentid($studentid)
+    {
+        $sql = 'SELECT * FROM historygrade where studentid = "'.$studentid.'"';
+		$query = $this->db->query($sql);
+		return $query;
+    }
+    public function getstatusWithcourseid($courseid)
+    {
+        $sql = 'SELECT * FROM historygrade where courseid = "'.$courseid.'"';
+		$query = $this->db->query($sql);
+		return $query;
+    }
 
   
     

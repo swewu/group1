@@ -77,6 +77,9 @@ class Welcome extends CI_Controller {
 	public function logout()
 	{
 		session_destroy();
+		echo "<script>alert('ออกจากระบบสำเร็จ');
+				window.location.href='index';
+				</script>";
 
 	}
 
@@ -167,9 +170,15 @@ class Welcome extends CI_Controller {
 		$year = isset($_POST['year'])?$_POST['year']:"";
 		$term = isset($_POST['term'])?$_POST['term']:"";
 		$grade = isset($_POST['grade'])?$_POST['grade']:"";
+		$newgrade = isset($_POST['newgrade'])?$_POST['newgrade']:"";
+		$role = $_SESSION['role'];
 		$this->load->model('UserModel');
-		$result = $this->UserModel->updateeditsubject($historyid, $studentid, $courseid, $year, $term, $grade);
 
+		if($role == 1){
+			$result = $this->UserModel->updateeditsubject($historyid, $studentid, $courseid, $year, $term, $grade);
+		}else{
+			$result = $this->UserModel->updateeditsubjectteacher($historyid, $studentid, $courseid, $year, $term, $newgrade);
+		}
 		if($result){
 			echo "<script>alert('แก้ไขข้อมูลสำเร็จ');
 				window.location.href='getdata';
@@ -181,5 +190,31 @@ class Welcome extends CI_Controller {
 				</script>";
 		}
 	}
+
+	public function getstatusWithyear()
+	{
+		$this->load->model('UserModel');
+		$result = $this->UserModel->getstatusWithyear();
+		return $result;
+	}
+
+    public function getstatusWithgrade($grade)
+    {
+		$this->load->model('UserModel');
+		$result = $this->UserModel->getstatusWithgrade();
+		return $result;
+    }
+    public function getstatusWithstudentid($studentid)
+    {
+		$this->load->model('UserModel');
+		$result = $this->UserModel->getstatusWithstudentid();
+		return $result;
+    }
+    public function getstatusWithcourseid($courseid)
+    {
+		$this->load->model('UserModel');
+		$result = $this->UserModel->getstatusWithcourseid();
+		return $result;
+    }
 
 }

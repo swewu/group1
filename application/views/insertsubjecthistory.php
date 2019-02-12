@@ -20,15 +20,33 @@
 	<!--Custom styles-->
 
 	<style >
-		body{
+		/*body{
 			background-image: url("img/sunrise.jpg");
 		    background-repeat: no-repeat;
     		background-size: 100% 125%;
+		}*/
+		.img-logo{
+			width: 100px;
+			height: 60px;
 		}
 	</style>
 </head>
-<body><br><br><br><br>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<img class="img-logo" src="<?php echo base_url() ?>assets/img/12.png" >
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	    </ul>
+	    <form class="form-inline my-2 my-lg-0">
+	<!--       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">LOGOUT</button>
+	    </form>
+	  </div>
+</nav>
+
+<br><br><br><br>
 <div class="container">
+
 	<div class="d-flex justify-content-center h-100">
 		<div class="card" >
 			<div class="card-header">
@@ -47,6 +65,7 @@
 			    <label for="inputPassword3" class="col-sm-3 col-form-label">รหัสวิชา</label>
 			    <div class="col-sm-9">
 			      <input type="text" class="form-control" id="courseid" name="courseid" placeholder="รหัสวิชา">
+
 			    </div>
 			  </div>
 

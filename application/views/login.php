@@ -15,6 +15,7 @@
     body {
       color: purple;
       background-color: #CCFFFF ;
+      background-size: cover;
     }
     .bg-bule-light{
       color: #ffffff;
@@ -22,7 +23,7 @@
     }
   </style>
 </head>
-<body background="<?php echo base_url() ?>assets/img/3.jpg">
+<body background="<?php echo base_url() ?>assets/img/11.png">
   <nav class="navbar navbar-expand-lg navbar-light bg-bule-light">
     <a class="navbar-brand" href="#">SWE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
